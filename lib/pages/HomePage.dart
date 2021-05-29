@@ -15,27 +15,27 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
         body: Center(
-      child: Container(
-          width: 200,
-          height: 70,
-          decoration: BoxDecoration(color: Colors.amber),
-          child: BlocBuilder<dynamic, TapCountBloc>(builder: (_, count) {
-            return TextButton(
-              child: Text("Tap here"),
-              onPressed: () {
-                count++;
-                if (count == 1) {
-                  context.read<TapCountBloc>().add(TapCounterEvent.first_page);
-                }
-                else if(count == 2){
-                  context.read<TapCountBloc>().add(TapCounterEvent.second_page);
-                }
-                else{
-                  context.read<TapCountBloc>().add(TapCounterEvent.third_page);
-                }
-              },
-            );
-          })),
-    ));
+          child: Container(
+              width: 200,
+              height: 70,
+              decoration: BoxDecoration(color: Colors.amber),
+              child: BlocBuilder<TapCountBloc,dynamic>(builder: (_, count) {
+                return TextButton(
+                  child: Text("Tap here"),
+                  onPressed: () {
+                    count++;
+                    if (count == 1) {
+                      context.read<TapCountBloc>().add(TapCounterEvent.first_page);
+                    }
+                    else if(count == 2){
+                      context.read<TapCountBloc>().add(TapCounterEvent.second_page);
+                    }
+                    else{
+                      context.read<TapCountBloc>().add(TapCounterEvent.third_page);
+                    }
+                  },
+                );
+              })),
+        ));
   }
 }
