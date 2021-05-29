@@ -1,6 +1,4 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:bloc_test_app/pages/HomePage.dart';
-
 
 class SimpleBlocObserver extends BlocObserver {
   @override
@@ -22,27 +20,25 @@ class SimpleBlocObserver extends BlocObserver {
   }
 }
 
-enum TapCounterEvent{first_page, second_page, third_page}
+enum TapCounterEvent { first_page, second_page, third_page }
 
-class TapCountBloc extends Bloc<dynamic, TapCountBloc>{
-  @override
-  // TODO: implement initialState
-  TapCountBloc get initialState => throw UnimplementedError();
+class TapCountBloc extends Bloc<TapCounterEvent, dynamic> {
+  TapCountBloc() : super(0);
 
   @override
-  Stream<TapCountBloc> mapEventToState(dynamic event) {
-   if(count == 1){
-    TapCounterEvent.first_page;
-   }
-   else if(count == 2){
-     TapCounterEvent.second_page;
-   }
-   else{
-     TapCounterEvent.third_page;
-   }
+  Stream<dynamic> mapEventToState(TapCounterEvent event) async* {
+    switch (event) {
 
+      case TapCounterEvent.first_page:
+      // TODO: Handle this case.
+      // yield gameName = "AliasFirstMode";
+        break;
+      case TapCounterEvent.second_page:
+      // TODO: Handle this case.
+        break;
+      case TapCounterEvent.third_page:
+      // TODO: Handle this case.
+        break;
+    }
   }
-
-  TapCountBloc() : super(TapCountBloc());
 }
-
